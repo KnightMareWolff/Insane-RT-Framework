@@ -1,0 +1,35 @@
+# Blender MTL File: 'MarauderCarBlender.blend'
+# Material Count: 3
+
+newmtl Chair
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.317647 0.015686 0.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:\\Wolff\\PUCPR\\Component Tester\\CT\\bin\\world\\Texturas\\Chair_color.png
+
+newmtl Corpus
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 0.694118 0.211765
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:\\Wolff\\PUCPR\\Component Tester\\CT\\bin\\world\\Texturas\\Base_Color.png
+
+newmtl Inside
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.600000 0.584314 0.572549
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:\\Wolff\\PUCPR\\Component Tester\\CT\\bin\\world\\Texturas\\Inside_Color.png
