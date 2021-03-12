@@ -1,3 +1,9 @@
+/************************************************************************/
+/*Project              :Insane RT Framework                             */
+/*Creation Date/Author :William Wolff - 02/18/2021                      */
+/*                                                                      */
+/*Copyright (c) 2004 William Wolff. All rights reserved                 */
+/************************************************************************/
 #include "INSCL.h"
 
 //Inicialização da Instância Estatica
@@ -8,11 +14,7 @@ CICLSystem* INSCL::pINSCLStaticInterface=NULL;
 /****************************************/
 INSCL::INSCL()
 {
-}
-
-INSCL::INSCL(QGLContext *pContext, QString pICL_DefaultGPUVendor)
-{
-    pINSCLStaticInterface = new CICLSystem(pContext,pICL_DefaultGPUVendor);
+    pINSCLStaticInterface = new CICLSystem();
 }
 
 INSCL::INSCL(QOpenGLContext *pContext, QString pICL_DefaultGPUVendor)

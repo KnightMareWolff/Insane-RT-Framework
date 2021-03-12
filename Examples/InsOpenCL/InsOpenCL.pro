@@ -46,3 +46,15 @@ unix|win32: LIBS += -L$$PWD/../../libs/opencl/ -lOpenCL
 
 INCLUDEPATH += $$PWD/../../libs/opencl/include
 DEPENDPATH += $$PWD/../../libs/opencl/include
+
+#INSGL
+unix|win32: LIBS += -L$$PWD/../bin/ -lINSGL
+
+INCLUDEPATH += $$PWD/../../INSGL
+DEPENDPATH += $$PWD/../../INSGL
+
+#INSCG
+unix|win32: LIBS += -L$$PWD/../bin/ -lINSCG
+
+INCLUDEPATH += $$PWD/../../INSCG
+DEPENDPATH += $$PWD/../../INSCG

@@ -1,10 +1,9 @@
-/**********************************************************************************/
-/*Projeto             :Insane RT Framework                                        */
-/*Descricao           :                                                           */
-/*Data de Criação     :                                                           */
-/*                                                                                */
-/*Copyright (c) 2013 William Wolff. Todos os direitos reservados                  */
-/**********************************************************************************/
+/************************************************************************/
+/*Project              :Insane RT Framework                             */
+/*Creation Date/Author :William Wolff - 02/18/2021                      */
+/*                                                                      */
+/*Copyright (c) 2004 William Wolff. All rights reserved                 */
+/************************************************************************/
 
 #ifndef IGL_COMPUTESHADER_H
 #define IGL_COMPUTESHADER_H

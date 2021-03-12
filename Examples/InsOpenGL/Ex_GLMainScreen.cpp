@@ -1,3 +1,9 @@
+/************************************************************************/
+/*Project              :Insane RT Framework                             */
+/*Creation Date/Author :William Wolff - 02/18/2021                      */
+/*                                                                      */
+/*Copyright (c) 2004 William Wolff. All rights reserved                 */
+/************************************************************************/
 #include "Ex_GLMainScreen.h"
 
 CGLMainScreen::CGLMainScreen()
@@ -97,8 +103,9 @@ void CGLMainScreen::BuildScene()
     //Now we have all the elements of the scene stored for rendering we need setup the geometry and materials
     //Properly to make possible the Render works fine....
 
-    //Create a simple Cube and Link with the Assets(Since the main Rendering is Clockwise we create a Cube in CounterClockwise order.
-    pCGInterface->CreateCube(p3DObjects[0]->IMT_Geometry,CIMTVector(0,0,10),CIMTVector(5.0f,5.0f,5.0f));
+    //Create a simple Cube and Link with the Assets.
+    pCGInterface->CreateCube(p3DObjects[0]->IMT_Geometry,CIMTVector(0,0,0),CIMTVector(5.0f,5.0f,5.0f));
+
     //Translate the Cube for the created Center and link with assets...
     p3DObjects[0]->SetType(IMT_OBJECT_TYPE_CUBE);
     p3DObjects[0]->LinkMaterial(MatId);
@@ -110,7 +117,7 @@ void CGLMainScreen::BuildScene()
     p3DObjects[1]->LinkMaterial(SkyMatId);
     p3DObjects[1]->LinkTexture(SkyTextId);
 
-    //The Sky is a Cube with all the faces inward, so... the Computational geometry component take handle... ;)
+    //The Terrain is a HeightMap(Grid of Heights) used to build a Mesh with Triangle Fans, so... the Computational geometry component take handle... ;)
     pCGInterface->CreateTerrain(p3DObjects[2]->IMT_Geometry,CIMTVector(0,0,0));
     p3DObjects[2]->SetType(IMT_OBJECT_TYPE_TERRAIN);
     p3DObjects[2]->LinkMaterial(TerrainMatId);
@@ -119,6 +126,9 @@ void CGLMainScreen::BuildScene()
     //After all geometry and resources initialization we can ask for GPU Store It!
     pGLInterface->SingleShotHWTextures();//This Store all the textures in GPU
     pGLInterface->SingleShotHWObjects ();//This Store all the geometry in GPU VBO´s
+
+    //Number of Updates Counter
+    iCounter=0;
 
 }
 void CGLMainScreen::paintGL()
@@ -131,20 +141,22 @@ void CGLMainScreen::paintGL()
        GLsync PaintID;
        //make the INSGL Context the Current Context, just to avoid too much SO Dependancy...
        pGLInterface->GetContext()->makeCurrent(this);
+       //Get the Id of The Render Pass Thread
        pGLInterface->FenceSync(PaintID);
        /**********************************************/
        /*Send Hardware DC´s to the Optimization CL   */
        /**********************************************/
        //p3DCenario->UpdateHardwareDC();
 
+       //Update the App Data
        UpdateScene();
 
-       /*********************************************/
-       /*Render the Scene Stored in the GL Component*/
-       /*********************************************/
+       //Render the Scene Stored in the GL Component
        pGLInterface->RenderScene();
 
+       //Wait for all OpenGL Pass Thread be completed
        pGLInterface->WaitSync(PaintID);
+
        /***********************************************/
        /*swap the framebuffers with the OpenGL Surface*/
        /***********************************************/
@@ -194,11 +206,26 @@ void CGLMainScreen::RenderScene()
 
 void CGLMainScreen::UpdateScene()
 {
-    int i=0;
-
-   //p3DObjects[0]->Translate(CIMTVector(0,0,50),false);
-   //p3DObjects[0]->Rotate(true,CIMTVector(0,1,0),CIMTVector(0,0,50));
-
+   if(iCounter==0)
+   {
+      p3DObjects[0]->Translate(CIMTVector(0,0,50),false);
+      iCounter++;
+   }
+   else if (iCounter==500)
+   {
+      p3DObjects[0]->Translate(CIMTVector(0,0,100),false);
+      iCounter++;
+   }
+   else if (iCounter==1000)
+   {
+      p3DObjects[0]->Translate(CIMTVector(0,0,50),false);
+      iCounter++;
+   }
+   else
+   {
+      p3DObjects[0]->Rotate(false,CIMTVector(0,1,0),CIMTVector(0,0,0));
+   }
+   iCounter++;
 }
 
 void CGLMainScreen::keyPressEvent(QKeyEvent *event)

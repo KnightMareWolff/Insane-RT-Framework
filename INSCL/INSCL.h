@@ -1,3 +1,9 @@
+/************************************************************************/
+/*Project              :Insane RT Framework                             */
+/*Creation Date/Author :William Wolff - 02/18/2021                      */
+/*                                                                      */
+/*Copyright (c) 2004 William Wolff. All rights reserved                 */
+/************************************************************************/
 #ifndef INSCL_H
 #define INSCL_H
 
@@ -9,7 +15,6 @@ class INSCL_EXPORT INSCL
 public:
     INSCL(                                                      );
     INSCL(QOpenGLContext *pContext,QString pICL_DefaultGPUVendor);
-    INSCL(QGLContext     *pContext,QString pICL_DefaultGPUVendor);
 
     void execCL(int pICL_Function                                                                                   );
     void execCL(int pICL_Function, CIMTVertexBuffer *pICL_Buffer  , uint pICL_BufferSize, CIMTMatrix *pICL_Transform);

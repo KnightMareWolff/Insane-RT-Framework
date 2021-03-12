@@ -1,24 +1,15 @@
-/**********************************************************************************/
-/*Projeto             :Insane RT Framework                                        */
-/*Descricao           :                                                           */
-/*Data de CriaÃ§Ã£o     :                                                           */
-/*                                                                                */
-/*Copyright (c) 2013 William Wolff. Todos os direitos reservados                  */
-/**********************************************************************************/
+/************************************************************************/
+/*Project              :Insane RT Framework                             */
+/*Creation Date/Author :William Wolff - 02/18/2021                      */
+/*                                                                      */
+/*Copyright (c) 2004 William Wolff. All rights reserved                 */
+/************************************************************************/
 
 #ifndef IGL_CAMERA_H
 #define IGL_CAMERA_H
 
 #include "INSGL_global.h"
 
-/************************************************************/
-/*Nome da Classe      : CIGLCamera                          */
-/*                                                          */
-/*Objetivo            : ResponsÃ¡vel pelos eventos de CÃ¢mera */
-/*                      Tem a responsabilidade de armazenar */
-/*                      e manipular a cÃ¢mera utilizada para */
-/*                      a visualizaÃ§Ã£o da cena.             */
-/************************************************************/
 class INSGL_EXPORT CIGLCamera
 {
 public:

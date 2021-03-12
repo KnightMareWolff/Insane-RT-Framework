@@ -1,3 +1,9 @@
+/************************************************************************/
+/*Project              :Insane RT Framework                             */
+/*Creation Date/Author :William Wolff - 02/18/2021                      */
+/*                                                                      */
+/*Copyright (c) 2004 William Wolff. All rights reserved                 */
+/************************************************************************/
 #include "IMT_3DObject.h"
 
 CIMT3DObject::CIMT3DObject()
